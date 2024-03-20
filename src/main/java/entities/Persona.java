@@ -24,42 +24,62 @@ public class Persona {
     private String gender;
 
     @OneToMany(mappedBy = "persona")
-    private List<partecipazione> partecipazione;
+    private List<Partecipazione> partecipazione;
 
-    public Persona(String name, String surname, String email, Date dateOfBirth, String gender, List<partecipazione> partecipazione) {
+    public Persona(String name, String surname, String email, Date dateOfBirth, String gender) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.partecipazione = partecipazione;
+
     }
 
-    public long getId() {
-        return id;
+    public Persona() {
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setPartecipazione(List<entities.partecipazione> partecipazione) {
-        this.partecipazione = partecipazione;
+    public List<Partecipazione> getPartecipazione() {
+        return partecipazione;
     }
+
 }

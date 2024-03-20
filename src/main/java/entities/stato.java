@@ -1,6 +1,6 @@
 package entities;
 
 public enum stato {
-    CONFERMATA, NON_CONFERMATA
+    CONFERMATO, NON_CONFERMATO
 
 }

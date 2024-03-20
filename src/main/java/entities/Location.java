@@ -18,10 +18,12 @@ public class Location {
     private List<Evento> eventi;
 
 
-    public Location(String name, String city, List<Evento> eventi) {
+    public Location(String name, String city) {
         this.name = name;
         this.city = city;
-        this.eventi = eventi;
+    }
+
+    public Location() {
     }
 
     public String getName() {

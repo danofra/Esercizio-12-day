@@ -1,6 +1,5 @@
 package dao;
 
-import entities.Evento;
 import entities.Location;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -12,12 +11,12 @@ public class LocationDAO {
         this.em = em;
     }
 
-    public void save(Evento evento) {
+    public void save(Location location) {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.persist(evento);
+        em.persist(location);
         tx.commit();
-        System.out.println("Evento " + evento.getTitle() + " salvato con successo");
+        System.out.println("Evento " + location.getName() + " salvato con successo");
     }
 
     public Location findById(int id) {

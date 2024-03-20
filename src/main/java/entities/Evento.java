@@ -2,7 +2,9 @@ package entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "eventi")
@@ -22,24 +24,26 @@ public class Evento {
     @Column(name = "max_partecipanti")
     private int maxParticipants;
 
-    @OneToOne(mappedBy = "evento")
-    private partecipazione partecipazione;
+    @OneToMany(mappedBy = "evento")
+    private List<Partecipazione> partecipazione;
 
     @ManyToOne
-    @JoinColumn(name = "location_ID", nullable = false)
+    @JoinColumn(name = "location_Id", nullable = false)
     private Location location;
 
-    public Evento(String title, String description, Date date, tipoEvento typeEvent, int maxParticipants, entities.partecipazione partecipazione, Location location) {
+    public Evento(String title, String description, Date date, tipoEvento typeEvent, int maxParticipants, Location location) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.typeEvent = typeEvent;
         this.maxParticipants = maxParticipants;
-        this.partecipazione = partecipazione;
         this.location = location;
     }
 
     public Evento() {
+    }
+
+    public Evento(String fact, LocalDate of, String s, tipoEvento tipoEvento, int i, Location location) {
     }
 
     public Long getId() {

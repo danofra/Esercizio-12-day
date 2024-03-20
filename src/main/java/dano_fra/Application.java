@@ -2,6 +2,10 @@ package dano_fra;
 
 import com.github.javafaker.Faker;
 import dao.EventoDAO;
+import dao.LocationDAO;
+import dao.PartecipazioneDAO;
+import dao.PersonaDAO;
+import entities.Partecipazione;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -16,49 +20,39 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         System.out.println("Hello World!");
         EventoDAO dao = new EventoDAO(em);
+        LocationDAO dao1 = new LocationDAO(em);
+        PersonaDAO dao2 = new PersonaDAO(em);
+        PartecipazioneDAO dao3 = new PartecipazioneDAO(em);
         Random random = new Random();
         Faker faker = new Faker();
-//        Supplier<Location> locationSupplier = (() -> new Location(faker.address().city()));
-//        Supplier<Location> locationSupplier1 = (() -> new Location(faker.address().city()));
-//        Supplier<Location> locationSupplier2 = (() -> new Location(faker.address().city()));
-//        Supplier<Location> locationSupplier3 = (() -> new Location(faker.address().city()));
-//        Location location = locationSupplier.get();
-//        Location location1 = locationSupplier1.get();
-//        Location location2 = locationSupplier2.get();
-//        Location location3 = locationSupplier3.get();
-//        em.getTransaction().begin();
-//        em.persist(location);
-//        em.persist(location1);
-//        em.persist(location2);
-//        em.persist(location3);
-//        em.getTransaction().commit();
-//        System.out.println("Location inseriti con successo" + location + "\n" + location1 + "\n" + location2 + "\n" + location3);
-//
-//
-//        Supplier<Evento> eventoSupplier = (() ->
-//                new Evento(faker.dragonBall().character(), faker.superhero().descriptor(), faker.date().birthday(), tipoEvento.PRIVATO, random.nextInt(1000, 5000),
-//                        stato.CONFERMATA, new Location(faker.address().city())));
-//        Supplier<Evento> eventoSupplier1 = (() ->
-//                new Evento(faker.dragonBall().character(), faker.superhero().descriptor(), faker.date().birthday(), tipoEvento.PUBBLICO, random.nextInt(1000, 5000),
-//                        stato.CONFERMATA, new Location(faker.address().city())));
-//        Supplier<Evento> eventoSupplier2 = (() ->
-//                new Evento(faker.dragonBall().character(), faker.superhero().descriptor(), faker.date().birthday(), tipoEvento.PRIVATO, random.nextInt(1000, 5000),
-//                        stato.NON_CONFERMATA, new Location(faker.address().city())));
-//        Supplier<Evento> eventoSupplier3 = (() ->
-//                new Evento(faker.dragonBall().character(), faker.superhero().descriptor(), faker.date().birthday(), tipoEvento.PUBBLICO, random.nextInt(1000, 5000),
-//                        stato.CONFERMATA, new Location(faker.address().city())));
-//
-//        Evento evento = eventoSupplier.get();
-//        Evento evento1 = eventoSupplier1.get();
-//        Evento evento2 = eventoSupplier2.get();
-//        Evento evento3 = eventoSupplier3.get();
-//        em.getTransaction().begin();
-//        em.persist(evento);
-//        em.persist(evento1);
-//        em.persist(evento2);
-//        em.persist(evento3);
-//        em.getTransaction().commit();
-//        System.out.println("Eventi inseriti con successo" + evento + "\n" + evento1 + "\n" + evento2 + "\n" + evento3);
+        // Create location
+//        for (int i = 0; i < 20; i++) {
+//            Location location = new Location(faker.demographic().demonym(), faker.address().cityName());
+//            dao1.save(location);
+//        }
+//        //Create Persona
+//        for (int i = 0; i < 20; i++) {
+//            Persona person1 = new Persona(faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), faker.date().birthday(),
+//                    random.nextInt(0, 2) == 0 ? "M" : "F");
+//            dao2.save(person1);
+//        }
+        // Create Evento
+//        for (int i = 0; i < 20; i++) {
+//            Evento evento = new Evento(faker.dragonBall().character(), faker.chuckNorris().fact(), faker.date().birthday(),
+//                    random.nextInt(1, 3) == 1 ? tipoEvento.PRIVATO : tipoEvento.PUBBLICO,
+//                    random.nextInt(1, 1000),
+//                    dao1.findById(random.nextInt(1, 20)));
+//            dao.save(evento);
+//        }
+        //Create Partecipazione
+        for (int i = 0; i < 20; i++) {
+            Partecipazione partecipazione = new Partecipazione(
+                    dao.findById(random.nextInt(1, 20)),
+                    dao2.findById(random.nextInt(1, 20)));
+            dao3.save(partecipazione);
+        }
+
+
 //
 //        try {
 //            Evento evento1 = dao.findById(2);

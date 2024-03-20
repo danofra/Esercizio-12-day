@@ -4,23 +4,24 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "partecipazione")
-public class partecipazione {
+public class Partecipazione {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Enumerated(EnumType.STRING)
     private stato stato;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "evento_ID", nullable = false)
     private Evento evento;
 
     @ManyToOne
-    @JoinColumn(name = "persona_ID", nullable = false, unique = true)
+    @JoinColumn(name = "persona_ID", nullable = false)
     private Persona persona;
 
-    public partecipazione(entities.stato stato, Evento evento, Persona persona) {
-        this.stato = stato;
+    public Partecipazione(Evento evento, Persona persona) {
+        this.stato = stato.NON_CONFERMATO;
         this.evento = evento;
         this.persona = persona;
     }
@@ -40,5 +41,5 @@ public class partecipazione {
     public Persona getPersona() {
         return persona;
     }
-    
+
 }
