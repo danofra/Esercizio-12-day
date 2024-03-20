@@ -22,6 +22,13 @@ public class Evento {
     @Column(name = "max_partecipanti")
     private int maxParticipants;
 
+    @OneToOne(mappedBy = "evento")
+    private partecipazione partecipazione;
+
+    @ManyToOne
+    @JoinColumn(name = "location_ID", nullable = false)
+    private Location location;
+
     public Evento(String title, String description, Date date, tipoEvento typeEvent, int maxParticipants) {
         this.title = title;
         this.description = description;
