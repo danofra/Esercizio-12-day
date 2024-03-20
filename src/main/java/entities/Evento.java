@@ -8,8 +8,8 @@ import java.util.Date;
 @Table(name = "eventi")
 public class Evento {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(name = "titolo")
     private String title;
     @Column(name = "descrizione")
@@ -29,18 +29,20 @@ public class Evento {
     @JoinColumn(name = "location_ID", nullable = false)
     private Location location;
 
-    public Evento(String title, String description, Date date, tipoEvento typeEvent, int maxParticipants) {
+    public Evento(String title, String description, Date date, tipoEvento typeEvent, int maxParticipants, entities.partecipazione partecipazione, Location location) {
         this.title = title;
         this.description = description;
         this.date = date;
         this.typeEvent = typeEvent;
         this.maxParticipants = maxParticipants;
+        this.partecipazione = partecipazione;
+        this.location = location;
     }
 
     public Evento() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
