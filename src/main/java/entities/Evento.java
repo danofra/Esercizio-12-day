@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +43,7 @@ public class Evento {
     public Evento() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

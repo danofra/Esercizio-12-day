@@ -5,8 +5,8 @@ import dao.EventoDAO;
 import dao.LocationDAO;
 import dao.PartecipazioneDAO;
 import dao.PersonaDAO;
-import entities.Partecipazione;
-import entities.stato;
+import entities.PartiteDiCalcio;
+import entities.tipoEvento;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -31,13 +31,13 @@ public class Application {
 //            Location location = new Location(faker.demographic().demonym(), faker.address().cityName());
 //            dao1.save(location);
 //        }
-//        //Create Persona
+////        //Create Persona
 //        for (int i = 0; i < 20; i++) {
 //            Persona person1 = new Persona(faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), faker.date().birthday(),
 //                    random.nextInt(0, 2) == 0 ? "M" : "F");
 //            dao2.save(person1);
 //        }
-        // Create Evento
+//        // Create Evento
 //        for (int i = 0; i < 20; i++) {
 //            Evento evento = new Evento(faker.dragonBall().character(), faker.chuckNorris().fact(), faker.date().birthday(),
 //                    random.nextInt(1, 3) == 1 ? tipoEvento.PRIVATO : tipoEvento.PUBBLICO,
@@ -45,15 +45,22 @@ public class Application {
 //                    dao1.findById(random.nextInt(1, 20)));
 //            dao.save(evento);
 //        }
-        //Create Partecipazione
+//        //Create Partecipazione
+//        for (int i = 0; i < 20; i++) {
+//            Partecipazione partecipazione = new Partecipazione(random.nextInt(1, 3) == 1 ? stato.CONFERMATO : stato.NON_CONFERMATO,
+//                    dao.findById(random.nextInt(1, 20)),
+//                    dao2.findById(random.nextInt(1, 20)));
+//            System.out.println("Evento: " + partecipazione.toString());
+//            dao3.save(partecipazione);
+//        }
+        // Create Partite di Calcio
         for (int i = 0; i < 20; i++) {
-            Partecipazione partecipazione = new Partecipazione(random.nextInt(1, 3) == 1 ? stato.CONFERMATO : stato.NON_CONFERMATO,
-                    dao.findById(random.nextInt(1, 20)),
-                    dao2.findById(random.nextInt(1, 20)));
-            System.out.println("Evento: " + partecipazione.toString());
-            dao3.save(partecipazione);
+            PartiteDiCalcio partiteDiCalcio = new PartiteDiCalcio(faker.name().firstName(), faker.chuckNorris().fact(), faker.date().birthday(), tipoEvento.PRIVATO, random.nextInt(1, 1000),
+                    dao1.findById(random.nextInt(1, 20)), faker.esports().team(), faker.esports().team(), random.nextInt(1, 10),
+                    random.nextInt(1, 10));
+            System.out.println(" Evento: " + partiteDiCalcio.toString());
+            dao.save(partiteDiCalcio);
         }
-
 
 //
 //        try {

@@ -22,9 +22,11 @@ public class Persona {
     private Date dateOfBirth;
     @Column(name = "sesso")
     private String gender;
-
     @OneToMany(mappedBy = "persona")
     private List<Partecipazione> partecipazione;
+    @ManyToOne
+    @JoinColumn(name = "atleti_Id")
+    private GareDiAtletica atleti;
 
     public Persona(String name, String surname, String email, Date dateOfBirth, String gender) {
         this.name = name;
