@@ -2,7 +2,6 @@ package entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -41,9 +40,6 @@ public class Evento {
     }
 
     public Evento() {
-    }
-
-    public Evento(String fact, LocalDate of, String s, tipoEvento tipoEvento, int i, Location location) {
     }
 
     public Long getId() {

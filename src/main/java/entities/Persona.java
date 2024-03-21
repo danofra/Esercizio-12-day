@@ -82,4 +82,14 @@ public class Persona {
         return partecipazione;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 }

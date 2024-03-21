@@ -6,6 +6,7 @@ import dao.LocationDAO;
 import dao.PartecipazioneDAO;
 import dao.PersonaDAO;
 import entities.Partecipazione;
+import entities.stato;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -46,9 +47,10 @@ public class Application {
 //        }
         //Create Partecipazione
         for (int i = 0; i < 20; i++) {
-            Partecipazione partecipazione = new Partecipazione(
+            Partecipazione partecipazione = new Partecipazione(random.nextInt(1, 3) == 1 ? stato.CONFERMATO : stato.NON_CONFERMATO,
                     dao.findById(random.nextInt(1, 20)),
                     dao2.findById(random.nextInt(1, 20)));
+            System.out.println("Evento: " + partecipazione.toString());
             dao3.save(partecipazione);
         }
 

@@ -17,20 +17,24 @@ public class Partecipazione {
     private Evento evento;
 
     @ManyToOne
-    @JoinColumn(name = "persona_ID", nullable = false)
+    @JoinColumn(name = "persona_ID", nullable = false, unique = true)
     private Persona persona;
 
-    public Partecipazione(Evento evento, Persona persona) {
-        this.stato = stato.NON_CONFERMATO;
+    public Partecipazione(stato stato, Evento evento, Persona persona) {
+        this.stato = stato;
         this.evento = evento;
         this.persona = persona;
     }
 
-    public entities.stato getStato() {
+    public Partecipazione() {
+
+    }
+
+    public stato getStato() {
         return stato;
     }
 
-    public void setStato(entities.stato stato) {
+    public void setStato(stato stato) {
         this.stato = stato;
     }
 
@@ -42,4 +46,12 @@ public class Partecipazione {
         return persona;
     }
 
+    @Override
+    public String toString() {
+        return "Partecipazione{" +
+                "stato=" + stato +
+                ", evento=" + evento +
+                ", persona=" + persona +
+                '}';
+    }
 }
